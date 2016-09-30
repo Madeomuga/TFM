@@ -23,8 +23,6 @@ my $TF;
 my $counter=0;#it gives you the number of lines of the gff file. It is a good way to check that the information is not lost.
 
 #Files that I am going to use
-$ARGV[0]="c:/Users/sstuff/Desktop/fimo-test3-sue.gff"; #Input
-$ARGV[1]="c:/Users/sstuff/Desktop/fimo-gene-sorted.gff"; #Ouput
 
 if(@ARGV < 2){
 print "\nUsage: step1.pl fimo.gff fimo-position-sorted.gff e\n\n"; 
@@ -32,7 +30,7 @@ exit(0);
 }
 
 #I open both files, FIMO as the input and OUTPUT as the ouput.
-open(FIMO, "$ARGV[0]") ||
+open(FIMO, "<$ARGV[0]") ||
     die "File '$ARGV[0]' not found\n";
 open(OUTPUT, ">$ARGV[1]") ||
     die "File '>$ARGV[1]' not found\n";

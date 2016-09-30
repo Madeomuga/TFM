@@ -5,8 +5,7 @@ use strict;
 
 #Script that returns the lines of a gff file according to the ID motifs that we want.
 
-$ARGV[0]="c:/Users/sstuff/Desktop/positive.gff";
-$ARGV[1]="c:/Users/sstuff/Desktop/motif_search.gff";
+
 
 my $motif=" ";
 my @motifs;
@@ -14,16 +13,24 @@ my $line;
 my @cols;
 my $motif_fimo;
 
-while ($motif ne "#") { #Introduce all the motifs that you want to consider. It will stop asking motifs as soon as you type #
-    print "Introduce the motif: ";
-    $motif=<STDIN>; 
-    chomp $motif;
-    push  @motifs, $motif;
+if ($ARGV[2] ne "#"){
+    push  @motifs, $ARGV[2];
+}
+if ($ARGV[3] ne "#"){
+    push  @motifs, $ARGV[3];
+}
+if ($ARGV[4] ne "#"){
+    push  @motifs, $ARGV[4];
+}
+if ($ARGV[5] ne "#"){
+    push  @motifs, $ARGV[5];
 }
 
 
 
-open(FIMO, "$ARGV[0]") ||
+
+
+open(FIMO, "<$ARGV[0]") ||
     die "File '$ARGV[0]' not found\n";
 open(OUTPUT, ">$ARGV[1]") ||
     die "File '>$ARGV[1]' not found\n";

@@ -19,7 +19,7 @@ my $index;
 my $position;
 my $scalar;
 my $TF;
-$ARGV[0]="c:/Users/sstuff/Desktop/motif_search.gff";
+$ARGV[0]="c:/Users/sstuff/Desktop/fimo.gff";
 $ARGV[1]="c:/Users/sstuff/Desktop/motif_search-position-sorted.gff";
 
 if(@ARGV < 2){

@@ -1,0 +1,12 @@
+﻿<tool id="remove_same_dif_motifs" name="Remove motifs overlapped" version="1.0.0">
+	<description>Script to compare contigous motifs in gff file and, in case that two overlap, remove the motif with the highest p value</description>
+	<command interpreter="perl">remove_motifs_galaxy.pl $input $output $secondoutput $value </command>
+	<inputs>
+		<param format="gff" name="input" type="data" label="FIMO file"/>
+		<param name="value" size="3" type="integer" value="20" label="Overlap value"/>
+	</inputs>
+	<outputs>
+		<data format="gff" name="output" label="positive_strand" />
+		<data format="gff" name="secondoutput" label="negative_strand" />
+	</outputs>
+</tool>

@@ -1,0 +1,11 @@
+﻿<tool id="rules" name="Rules" version="1.0.0">
+	<description>tool that looks for genes that have motifs from a certain rule</description>
+	<command interpreter="perl">rules_galaxy.pl $input $output $value</command>
+	<inputs>
+		<param format="gff" name="input" type="data" label="input"/>
+		<param name="value" size="2" type="integer" value="1" label="Number of motifs of the rule: "/>
+	</inputs>
+	<outputs>
+		<data format="gff" name="output" label="rules" />
+	</outputs>
+</tool>

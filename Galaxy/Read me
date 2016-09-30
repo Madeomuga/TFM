@@ -1,0 +1,36 @@
+These are the instructions to follow to test the workflow in galaxy-project
+
+First you need to copy the content of tool_conf.xml.sample in your tool_conf.xml.sample.
+
+Secondly, you need to copy all the tools in your galaxy's tool folder.
+
+#==============Workflow tools==============#
+
+1. Upload all the document files in the test folder. Use the Galaxy tool "Get data> upload file".
+2. Use "Cis-regulatory elements finder(CREF)>Get shorter headers" on mart_export.txt to get a compatible fasta file for AME. Output: promoters_sh.txt
+3. After using AME tool on promoters_sh.txt, we will get ame.txt we the enriched motifs in our sequences. Use "CREF>Extract motifs codes" as ame.txt as input. Output: ame-shorted.txt
+4. Use "CREF>List motifs" on ame-shorted.txt. Output: list_motifs.txt
+5. Use "CREF> Extract motifs subset". Motifs: list_motifs.txt | MEME file: JASPAR_CORE_2016.meme. Output: list-motifs-JASPAR-data.meme
+6. We will use FIMO at this point on promoters_sh.txt with our personalized database list-motifs-JASPAR-data.meme. Output: fimo.gff
+7. Use "Remove overlaped motifs v.2.0 > sort a gff file by genes ID" on fimo.gff. Output: fimo-position-sorted.gff.
+8. Use "Remove overlaped motifs v.2.0 > Sort block of genes by first position" on fimo-position-sorted.gff. Output: fimo-gene-and-position-sorted.gff
+9. Use "Remove overlaped motifs v.2.0 >Remove motifs overlaped" on fimo-gene-and-position-sorted.gff. Outputs: positive.gff and negative.gff
+10. Use "Gene-motif matrix" either positive.gff or negative.gff to get the matrices for R analysis.
+
+#==============Rules analysis tools ==============#
+
+1. Use "CREF results analysis > Motif search" on positive.gff. Write the following motifs:
+		Motif1: MA0377.1
+		Motif2: MA0497.1
+		Motif3: MA0045.1
+ Output: motif_search_output
+
+2. Use "CREF results analysis > Rules" motif_search_output on  and write 3 as the number of motifs in the rule. Output: rules
+
+3. Use "CREF results analysis > Gene-Motf map" on rules. Output: testrules
+
+4. Use "CREF results analysis > Cis-regulatory modules searcher" on testrules and write the following motifs in this order:
+
+		Motif1: MA0045.1
+		Motif2: MA0497.1
+		Motif3: MA0377.1

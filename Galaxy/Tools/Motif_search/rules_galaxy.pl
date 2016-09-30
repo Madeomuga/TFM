@@ -4,7 +4,10 @@ $|=1;
 use warnings;
 use strict;
 #Script that looks for genes that have motifs from a certain rule.
-
+if(@ARGV < 3){
+print "\nUsage: rules_galaxy.pl ouput.gff value \n\n";
+exit(0);
+}
 #Declaration of variables
 my $line;
 my $line2;
@@ -15,26 +18,21 @@ my %hash1;
 my %hash3;
 
 my $gene;
+my $gene2;
 my $TF;
+my $TF2;
 my $num_motifs;
 my @genes_rules;
 
-$ARGV[0]="c:/Users/sstuff/Desktop/motif_search.gff"; #INPUT
-$ARGV[1]="c:/Users/sstuff/Desktop/rules.gff"; #OUPUT
-print "Introduce the total number of the motifs of the rule: ";
-$ARGV[2]=<STDIN>; #size of the rules, number of lhs+rhs
 
 $num_motifs=$ARGV[2];
-if(@ARGV < 3){
-print "\nUsage: rules.pl \n\n";
-exit(0);
-}
 
-open(FIMO, "$ARGV[0]") ||
+
+open(FIMO, "<$ARGV[0]") ||
     die "File '$ARGV[0]' not found\n";
         
 open(OUTPUT, ">$ARGV[1]") ||
-    die"File '$ARGV[1]' not found\n";
+    die "File '$ARGV[1]' not found\n";
     
 
 while (<FIMO>) {
@@ -59,7 +57,6 @@ while (<FIMO>) {
        if ($hash1{$gene}==$num_motifs and not exists $hash3{$gene}) {
         $hash3{$gene}=1;
         #print $line, "\n";
-        
        }
        
        
@@ -69,7 +66,7 @@ while (<FIMO>) {
 }
 
 close FIMO;
-open(FIMO, "$ARGV[0]") ||
+open(FIMO, "<$ARGV[0]") ||
     die "File '$ARGV[0]' not found\n";
     
 while (<FIMO>) {
@@ -78,12 +75,12 @@ while (<FIMO>) {
     @cols2=split;
  
         if (not $line2=~/^ /){
-            $TF= substr $cols2[8],5,8; 
-            $gene=substr $cols2[0],0,21;
+            $TF2= substr $cols2[8],5,8; 
+            $gene2=substr $cols2[0],0,21;
             foreach my $gene_listed (keys %hash3){
                 
-                if ($gene_listed eq $gene) {
-                    printf OUTPUT "%s\n", $line2;
+                if ($gene_listed eq $gene2) {
+                    printf OUTPUT"%s\n", $line2;
                     
             }
             

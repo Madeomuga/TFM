@@ -1,0 +1,10 @@
+﻿<tool id="extract_motifs_codes" name="Extract motifs codes" version="1.0.0">
+	<description>Script to take output from AME (part of memesuite-org) and extract a list of the overrepresented motifs</description>
+	<command interpreter="perl">Extract_motif_codes_galaxy.pl $input $output</command>
+	<inputs>
+		<param format="txt" name="input" type="data" label="AME file"/>
+	</inputs>
+	<outputs>
+		<data format="txt" name="output" label="ame-shorted" />
+	</outputs>
+</tool>

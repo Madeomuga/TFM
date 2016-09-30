@@ -1,0 +1,10 @@
+﻿<tool id="step1" name="Sort a gff file by genes ID" version="1.0.0">
+	<description>Script that takes a gff format file from MEME suite as input and orders it by genes, so it will create an output with all the information grouped by genes. Motifs will be mixed.</description>
+	<command interpreter="perl">step1_galaxy.pl $input $output</command>
+	<inputs>
+		<param format="gff" name="input" type="data" label="FIMO file"/>
+	</inputs>
+	<outputs>
+		<data format="gff" name="output" label="fimo-position-sorted.gff" />
+	</outputs>
+</tool>

@@ -17,18 +17,17 @@ my $gene;
 my $TF;
 my $current_gene;
 my $size;
-$ARGV[0]="c:/Users/sstuff/Desktop/rules.gff"; #INPUT
-$ARGV[1]="c:/Users/sstuff/Desktop/testrules_output.gff"; #OUTPUT
-if(@ARGV < 1){
-print "\nUsage: rules.pl \n\n";
+
+if(@ARGV < 2){
+print "\nUsage: testrules_galaxy.pl fimo.gff testrules.gff \n\n";
 exit(0);
 }
 
-open(FIMO, "$ARGV[0]") ||
+open(FIMO, "<$ARGV[0]") ||
     die "File '$ARGV[0]' not found\n";
-open(OUTPUT,">$ARGV[1]") ||
-    die "File '$ARGV[1]' not found";
-    
+open(OUTPUT, ">$ARGV[1]") ||
+    die "File '$ARGV[1]' not found\n";
+
 $current_gene="";
         
 while (<FIMO>) {
@@ -41,14 +40,14 @@ while (<FIMO>) {
     if (not exists $hash{$gene} ) {
         
         if ($current_gene ne "") {
-            printf OUTPUT "%s",$current_gene;
-            printf OUTPUT "%s", " ";
-            printf OUTPUT "%s", "=>";
-            printf OUTPUT "%s"," "; 
+            printf OUTPUT $current_gene;
+            printf OUTPUT " ";
+            printf OUTPUT "=>";
+            printf OUTPUT "\t"; 
         }
         for (my $i=0;$i<$size;$i++){
-            printf OUTPUT "%s", $motif[$i];
-            printf OUTPUT "%s","($pos[$i])";
+            printf OUTPUT $motif[$i];
+            printf OUTPUT "($pos[$i])";
             printf OUTPUT "\t";
         }
         printf OUTPUT "\n";
@@ -71,10 +70,10 @@ while (<FIMO>) {
     }
 
 $size=scalar @motif;
-printf OUTPUT  $current_gene;
-printf OUTPUT  " ";
-printf OUTPUT  "=>";
-printf OUTPUT " ";   
+printf OUTPUT $current_gene;
+printf OUTPUT " ";
+printf OUTPUT "=>";
+printf OUTPUT "\t";   
 for (my $i=0;$i<$size;$i++){
             printf OUTPUT $motif[$i];
             printf OUTPUT"($pos[$i])";

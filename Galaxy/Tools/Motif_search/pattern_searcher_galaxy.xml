@@ -1,0 +1,13 @@
+﻿<tool id="gene_motif_map" name="Cis-regulatory modules searcher" version="1.0.0">
+	<description>finds patterns between motifs in a promoter</description>
+	<command interpreter="perl">pattern_searcher_galaxy.pl $input $output $motif1 $motif2 $motif3</command>
+	<inputs>
+		<param format="txt" name="input" type="data" label="Gene-motif map file"/>
+		<param name="motif1" size="8" type="text" value="#" label="Motif 1"/>
+		<param name="motif2" size="8" type="text" value="#" label="Motif 2"/>
+		<param name="motif3" size="8" type="text" value="#" label="Motif 3"/>
+	</inputs>
+	<outputs>
+		<data format="txt" name="output" label="gene_motif_map" />
+	</outputs>
+</tool>

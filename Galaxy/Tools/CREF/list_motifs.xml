@@ -1,0 +1,10 @@
+﻿<tool id="list_motifs" name="List motifs" version="1.0.0">
+	<description>Extract the motifs names from ame processed file</description>
+	<command interpreter="perl">list_motifs_galaxy.pl $input $output</command>
+	<inputs>
+		<param format="txt" name="input" type="data" label="AME file processed"/>
+	</inputs>
+	<outputs>
+		<data format="txt" name="output" label="list_motifs" />
+	</outputs>
+</tool>

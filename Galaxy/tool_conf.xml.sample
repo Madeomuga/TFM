@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<toolbox monitor="true">d
+  <section id="CREF" name="CREF">
+    <tool file="CREF/short-headers.xml"/>
+    <tool file="CREF/extract_motifs_codes.xml"/>
+    <tool file="CREF/list_motifs.xml"/>
+    <tool file="CREF/extract_motifs_subset.xml"/>
+  </section>
+  <section id="First_version" name="Remove same overlapped motifs v.1.0">
+    <tool file="First_version/sorting_first.xml"/>
+    <tool file="First_version/remove_motifs_overlaped.xml"/>
+  </section>
+   <section id="Second" name="Remove same and differents overlapped motifs v.2.0">
+    <tool file="Second/remove_motifs_v2.xml"/>
+    <tool file="Second/step1.xml"/>
+    <tool file="Second/step2.xml"/>
+  </section>
+  <section id="Matrix" name="Gene-motif matrix">
+    <tool file="Matrix/matrix_generator.xml"/>
+  </section>
+  <section id="Motif_search" name="CREF results analysis">
+    <tool file="Motif_search/motif_search_galaxy.xml"/>
+    <tool file="Motif_search/sort_genes_galaxy.xml"/>
+    <tool file="Motif_search/sort_positions_galaxy.xml"/>
+    <tool file="Motif_search/rules.xml"/>
+    <tool file="Motif_search/testrules_galaxy.xml"/>
+  </section>
+</toolbox>
